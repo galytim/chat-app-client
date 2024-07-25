@@ -1,5 +1,5 @@
-import './App.scss';
-import Chats from './pages/Chats/Chats';
+import "./App.scss";
+import Chats from "./pages/Chats/Chats";
 
 const App = () => {
   return (
@@ -7,6 +7,6 @@ const App = () => {
       <Chats />
     </div>
   );
-}
+};
 
 export default App;

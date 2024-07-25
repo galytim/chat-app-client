@@ -1,30 +1,30 @@
 import Chat from "../../components/Chat/Chat";
 import ChatService from "../../services/Chat.service";
+import { IChat } from "../../interfaces/chat";
 import { useEffect, useState } from "react";
+
 const Chats = () => {
-  const [chats,setChats] = useState<any[]>([])
+  const [chats, setChats] = useState<IChat[]>([]);
   async function fetchChats() {
     try {
-        const response = await ChatService.getComments();
-        setChats(response.data);
+      const response = await ChatService.getComments();
+      setChats(response.data);
     } catch (error) {
-        console.error('Failed to fetch chats:', error);
+      console.error("Failed to fetch chats:", error);
     }
-}
+  }
 
-useEffect(() => {
+  useEffect(() => {
     fetchChats();
-}, []); 
+  }, []);
 
-return (
+  return (
     <div className="Chat">
-        { chats.map(chat =>
-          <Chat chat={chat} key={chat.id}/>
-        )
-           
-        }
+      {chats.map((chat) => (
+        <Chat chat={chat} key={chat.id} />
+      ))}
     </div>
-);
-}
+  );
+};
 
 export default Chats;
