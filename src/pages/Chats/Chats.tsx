@@ -1,28 +1,31 @@
-import Chat from "../../components/Chat/Chat";
+import ChatsSidebar from "../../components/ChatSidebar/ChatsSidebar";
 import ChatService from "../../services/Chat.service";
 import { IChat } from "../../interfaces/chat";
 import { useEffect, useState } from "react";
+import { IChatShortcut } from "../../interfaces/chat-shortcut";
+import Chat from "../../components/Chat/Chat";
+import "./Chats.scss"
 
 const Chats = () => {
   const [chats, setChats] = useState<IChat[]>([]);
-  async function fetchChats() {
+  const [shortcuts, setShortcuts] = useState<IChatShortcut[]>()
+  async function fetchShortcuts() {
     try {
-      const response = await ChatService.getComments();
-      setChats(response.data);
+      const response = ChatService.getChatsShortcuts();
+      setShortcuts(response);
     } catch (error) {
       console.error("Failed to fetch chats:", error);
     }
   }
 
   useEffect(() => {
-    fetchChats();
+    fetchShortcuts();
   }, []);
 
   return (
-    <div className="Chat">
-      {chats.map((chat) => (
-        <Chat chat={chat} key={chat.id} />
-      ))}
+    <div className='container flex'>
+      <ChatsSidebar />
+      <Chat/>
     </div>
   );
 };
