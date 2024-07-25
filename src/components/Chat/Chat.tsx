@@ -1,10 +1,9 @@
 import "./Chat.scss";
-import ChatService from "../../services/Chat.service";
-import { useEffect, useState } from "react";
-import React from "react";
+import { useState } from "react";
+import { IChatData } from "../../interfaces/chat-data";
 
-const Chat = (props: any) => {
-  const [chats, setChats] = useState<any[]>([]);
+const Chat = (props: IChatData) => {
+  const [chats, setChats] = useState<IChatData[]>([]);
 
   return (
     <div className="Chat">

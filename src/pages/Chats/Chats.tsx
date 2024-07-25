@@ -1,8 +1,10 @@
 import Chat from "../../components/Chat/Chat";
 import ChatService from "../../services/Chat.service";
+import { IChat } from "../../interfaces/chat";
 import { useEffect, useState } from "react";
+
 const Chats = () => {
-  const [chats, setChats] = useState<any[]>([]);
+  const [chats, setChats] = useState<IChat[]>([]);
   async function fetchChats() {
     try {
       const response = await ChatService.getComments();
