@@ -1,14 +1,10 @@
-import "./Chat.scss";
-import { useState } from "react";
-import { IChatData } from "../../interfaces/chat-data";
+import React from "react";
+import "./Chat.scss"
 
-const Chat = (props: IChatData) => {
-  const [chats, setChats] = useState<IChatData[]>([]);
-
+const Chat = () => {
   return (
     <div className="Chat">
-      <div>{props.chat.email}</div>
-      <div>{props.chat.name}</div>
+
     </div>
   );
 };
